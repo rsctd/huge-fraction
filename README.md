@@ -13,7 +13,12 @@ composer require rsctd/huge-fraction
 
 ### Usage
 ```php
+require_once __DIR__.'/../vendor/autoload.php';
+
 use Rsctd\HugeFraction\Fraction;
+
+$fraction = Fraction::fromString('3 2/5');
+var_dump($fraction);
 ```
 
 ### Running tests
