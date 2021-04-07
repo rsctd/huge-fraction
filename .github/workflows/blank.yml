@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches: 
+      - main
+      - develop
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.0'
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        working-directory: ./
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        working-directory: ./
+        run: vendor/bin/phpunit
