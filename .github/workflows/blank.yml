@@ -29,4 +29,4 @@ jobs:
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         working-directory: ./
-        run: vendor/bin/phpunit
+        run: composer test
